@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Start A Trip{% endblock %}
+{% block content %}
+<!-- Page content-->
+<link href="static/styles.css" rel="stylesheet" />
+<div class="row gutters-sm">
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Enter Trip Information</h3>
+                        <p>Fill in the data below.</p>
+                        <form  method="POST" novalidate>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="MPG" placeholder="Car MPG (ex. '33')" required>
+                                <br>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="GasTankCapacity" placeholder="Car Gas Tank Capacity (ex. '15')" required>
+                                <br>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="Origin" placeholder="Origin" required>
+
+                                <br>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="Destination" placeholder="Destination" required>
+                                <br>
+
+                                <div class="form-button mt-3">
+                                    <button id="submit" type="submit"
+                                        class="btn btn-primary">Submit</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
