@@ -12,10 +12,24 @@
         </div>
         <div class="col-md-7">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title"><u>Trip Summary</u></h5>
+                <ol class="gradient-list">
+                    <li>
+                        <div class="column"><b>&ensp;&ensp;&ensp;TOTAL TIME:</b></div>
+                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.time }} </div>
+                    </li>
+                    <li>
+                        <div class="column"><b>&ensp;&ensp;&ensp;DISTANCE:</b></div>
+                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.distance }} Miles</div>
+                    </li>
+                    <li>
+                        <div class="column"><b>&ensp;&ensp;&ensp;FUEL USED:</b></div>
+                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.fuel }} Gallons</div>
+                    </li>
+                    <li>
+                        <div class="column"><b>&ensp;&ensp;&ensp;COST OF FUEL BASED OFF OF LOCAL PRICES:</b></div>
+                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;$ {{ tripDescription.fuel }}</div>
+                    </li>
             </div>
         </div>
     </div>
