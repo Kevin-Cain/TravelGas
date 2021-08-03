@@ -1,14 +1,14 @@
 {% extends "base.html" %} {% block title %}Trip Results{% endblock %}
 {% block content %}
-<link href="static/weathercard.css" rel="stylesheet" />
+<link href="/static/weathercard.css" rel="stylesheet" />
 <br>
 
 
 <div class="card4">
     <div class="row no-gutters">
         <div class="col-md-5">
-            <img src="https://www.mapquestapi.com/staticmap/v5/map?start=Redding,CA&end=Chico,CA&size=@2x&key={{mapquestKey}}"
-                class="card-img" alt="...">
+            <img src="https://www.mapquestapi.com/staticmap/v5/map?start={{tripDescription.HomeAddress}}&end={{tripDescription.Destination}}&size=@2x&key={{mapquestKey}}"
+                class="card-img">
         </div>
         <div class="col-md-7">
             <div class="card-body">
@@ -27,19 +27,20 @@
                         <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.fuel }} Gallons</div>
                     </li>
                     <li>
-                        <div class="column"><b>&ensp;&ensp;&ensp;COST OF FUEL BASED OFF OF LOCAL PRICES:</b></div>
-                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;$ {{ tripDescription.fuel }}</div>
+                        <div class="column"><b>&ensp;&ensp;&ensp;COST OF FUEL BASED OFF OF ORIGIN STATE AVERAGE:</b></div>
+                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;$ {{ tripDescription.cost }}</div>
                     </li>
             </div>
         </div>
     </div>
 </div>
 
+
 <br>
 <div class="column3">
     <div class="card2">
         <div class="card-body">
-            7 Day Weather Forcast for {{ tripDescription.Destination }}
+            7 Day Weather Forcast 
         </div>
     </div>
 </div>
@@ -48,7 +49,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.mondayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Monday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.mondayDescription }}</div>
         <div class="row">
@@ -65,7 +66,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.tuesdayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Tuesday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.tuesdayDescription }}</div>
         <div class="row">
@@ -82,7 +83,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.wensdayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Wensday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.wensdayDescription }}</div>
         <div class="row">
@@ -99,7 +100,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.thursdayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Thursday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.thursdayDescription }}</div>
         <div class="row">
@@ -116,7 +117,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.fridayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Friday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.fridayDescription }}</div>
         <div class="row">
@@ -133,7 +134,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.saturdayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Saturday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.saturdayDescription }}</div>
         <div class="row">
@@ -150,7 +151,7 @@
     <div class="card"> <span class="icon"><img class="img-fluid"
                 src="http://openweathermap.org/img/wn/{{tripDescription.sundayIcon}}@2x.png"></span>
         <div class="title">
-            <p>Sunday</p>
+            <p>{{ tripDescription.Destination }}</p>
         </div>
         <div class="temp">{{ tripDescription.sundayDescription }}</div>
         <div class="row">

@@ -14,8 +14,8 @@ def login():
         username = User.query.filter_by(userName=userName).first()
         
         if username:
-            if check_password_hash(userName.password, password):
-                login_user(userName, remember=True)
+            if check_password_hash(username.password, password):
+                login_user(username, remember=True)
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again.', category='error')
@@ -40,7 +40,7 @@ def login():
             login_user(new_user, remember=True)                
             return redirect(url_for('views.home'))
         
-    return render_template("login.html", user=current_user )
+    return render_template("login.html", user=current_user)
 
 
 @auth.route('/logout')
