@@ -5,7 +5,6 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     userName = db.Column(db.String(150), unique=True)

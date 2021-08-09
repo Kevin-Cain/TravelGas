@@ -27,14 +27,14 @@
     <thead>
         <tr>
             <th></th>
-            <th>Origin</th>
-            <th>Destination</th>
+            <th class="text-secondary">ORIGIN</th>
+            <th class="text-secondary">DESTINATION</th>
         </tr>
     </thead>
     <tbody>
         {% for trip in user.trip %}
         <tr>
-            <td><a class="nav-item nav-link" href="{{url_for('views.currentTrip', id=trip.id)}}">{{ trip.id }}</a></td>
+            <td><a class="nav-item nav-link" href="{{url_for('views.currentTrip', id=trip.id)}}">( {{ trip.id }} )</a></td>
             <td>{{ trip.HomeAddress }}</td>
             <td>{{ trip.Destination }}</td>
         </tr>

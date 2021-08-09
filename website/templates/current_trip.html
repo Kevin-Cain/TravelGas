@@ -20,18 +20,26 @@
                     </li>
                     <li>
                         <div class="column"><b>&ensp;&ensp;&ensp;DISTANCE:</b></div>
-                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.distance }} Miles</div>
+                        <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.distance }} Miles
+                        </div>
                     </li>
                     <li>
                         <div class="column"><b>&ensp;&ensp;&ensp;FUEL USED:</b></div>
                         <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{ tripDescription.fuel }} Gallons</div>
                     </li>
                     <li>
-                        <div class="column"><b>&ensp;&ensp;&ensp;COST OF FUEL BASED OFF OF ORIGIN STATE AVERAGE:</b></div>
+                        <div class="column"><b>&ensp;&ensp;&ensp;COST OF FUEL BASED OFF OF ORIGIN STATE AVERAGE:</b>
+                        </div>
                         <div class="column">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;$ {{ tripDescription.cost }}</div>
                     </li>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
+        <form method="POST">
+            <button type="submit" name="delete" value="delete" class="btn btn-danger btn-lg float-right">Delete Trip</button>
+        </form>
     </div>
 </div>
 
@@ -40,7 +48,7 @@
 <div class="column3">
     <div class="card2">
         <div class="card-body">
-            7 Day Weather Forcast 
+            7 Day Weather Forcast
         </div>
     </div>
 </div>
