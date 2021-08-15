@@ -12,16 +12,15 @@ from flask_restful import Resource, Api
 
 
 views = Blueprint('views', __name__)
-mapquestKey = os.environ.get('mapquestKey', None)
-OpenWeatherKey = os.environ.get('OpenWeatherKey', None)
 
+# ~~~~~ API KEYS ~~~~~~~~
+
+mapquestKey = 'yourMapQuestKey'
+OpenWeatherKey = 'yourOpenWeatherKey'
 
 
 # ~~~~~~~ API ~~~~~~~~
 
-@views.route('/test')
-def test():
-    return "WORKS"
 
 @views.route('/api/trip/<int:mpg>/<HomeAddress>/<Destination>', methods=['GET','POST'])
 def api_trip(mpg, HomeAddress, Destination):
