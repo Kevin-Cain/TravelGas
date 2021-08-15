@@ -17,7 +17,7 @@ UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](htt
 * Calculates drive distance, fuel used, drive time and total cost of fuel.
 * 7 day Weather forecast
 
-### REST API Call
+## REST API Call
 ```
 format: GET /api/MPG/Origin/Destination
 example: curl  http://127.0.0.1:5000/api/trip/33/LasVegas,Nv/Miami,Fl
