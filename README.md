@@ -5,7 +5,7 @@ UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](htt
 ## Description
 * User makes account, inputs there car MPG, starting point and destination.  
 * The Mapquest API and OpenWeather API is then called.
-* This data is then calculated and displayed in clean user interface.
+* This data is then calculated and displayed in a clean user interface.
 
 ## Features
 * Full Web Application
@@ -26,7 +26,11 @@ example: curl  http://127.0.0.1:5000/api/trip/33/Las Vegas,Nv/Miami,Fl
 pip install requirements.txt
 ```
 
-### Executing program
+### Executing program Locally
+1)  Get an APi Key from [OpenWeather API](https://openweathermap.org/api) and [MapQuest API](https://developer.mapquest.com/documentation/open/)
+2)  Replace lines 15 and 16 of [UltimateTrip/Website/views.py](https://github.com/Kevin-Cain/UltimateTrip/blob/main/website/views.py) with your Api Keys
 
 ```
+cd UltimateTrip
+python3 application.py
 ```
