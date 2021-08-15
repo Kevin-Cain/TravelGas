@@ -90,6 +90,14 @@ Sample Response
   ]
 }
 ```
+### Testing
+* [Unit testing](https://github.com/Kevin-Cain/UltimateTrip/blob/main/tests/test_api.py) was accomplished with Pytest
+```
+cd UltimateTrip
+```
+```
+python -m pytest -v tests/test_api.py
+```
 
 ### Installing
 
@@ -103,5 +111,7 @@ pip install requirements.txt
 
 ```
 cd UltimateTrip
+```
+```
 python3 application.py
 ```
