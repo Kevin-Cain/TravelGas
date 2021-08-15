@@ -1,22 +1,25 @@
 # UltimateTrip
 
-UltimateTrip is a complete Back-End / Front-End / REST API that gives analytics on a road trip. It was written with Python, Jinja, HTML and CSS. UltimateTrip uses the Flask web framework and SQlAlchemy for the database. It consumes the OpenWeather API and the MapQuest API. UltimateTrip uses Travis CI for continuous integration and deployment and deployed on [HEROKU](https://google.com)
+UltimateTrip is a complete [Back-End / Front-End / REST API] that gives analytics on a road trip. It was written with Python, Jinja, HTML and CSS. UltimateTrip uses the Flask web framework and SQlAlchemy for the database. It consumes the [OpenWeather API](https://openweathermap.org/api) and the [MapQuest API](https://developer.mapquest.com/documentation/open/). UltimateTrip uses Travis CI for continuous integration and deployment and deployed on [HEROKU](https://google.com)
 
 ## Description
-
 * User makes account, inputs there car MPG, starting point and destination.  
-* The Google maps api is then called to find the distance of the trip.
-* The CollectApi is then called to find current gas prices along this trip.
-* This data is then calculated to find the amount of money it would cost currently to drive this trip in their vehicle.
+* The Mapquest API and OpenWeather API is then called.
+* This data is then calculated and displayed in clean user interface.
 
+## Features
+* Full Web Application
+* REST API
+* User registration, login, and authentication
+* User account creation and storage
+* Calculates drive distance, fuel used, drive time and total cost of fuel.
+* 7 day Weather forecast
 
-
-## Getting Started
-
-### Dependencies
-
-* 
-
+### REST API Call
+```
+format: GET /api/MPG/Origin/Destination
+example: curl  http://127.0.0.1:5000/api/trip/33/Las Vegas,Nv/Miami,Fl
+```
 ### Installing
 
 ```
