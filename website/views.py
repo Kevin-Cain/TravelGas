@@ -10,6 +10,7 @@ from flask_restful import Resource, Api
 
 
 
+
 views = Blueprint('views', __name__)
 mapquestKey = os.environ.get('mapquestKey', None)
 OpenWeatherKey = os.environ.get('OpenWeatherKey', None)
@@ -39,22 +40,21 @@ def api_trip(mpg, HomeAddress, Destination):
     jsonresponse = response2.json()
 
 
-    # ~~~ SCRAPING AAA TO GET AVERAGE GAS PRICE PER STATE ~~~
-    url = 'https://gasprices.aaa.com/state-gas-price-averages/'
-    req = urllib3.PoolManager()
-    res = req.request('GET', url)
-    soup = BeautifulSoup(res.data, 'html.parser')
-    contents = soup.find_all(class_="regular")
-    states = {1:'AK',2:'AL',3:'AR',4:'AZ',5:'CA',6:'CO',7:'CT',8:'DC',9:'DE',10:'FL',11:'GA',12:'HI',13:'IA',14:'ID',15:'IL',16:'IN',17:'KS',18:'KY',19:'LA',20:'MA',21:'MD',22:'ME',23:'MI',24:'MN',25:'MO',26:'MS',27:'MT',28:'NC',29:'ND',30:'NE',31:'NH',32:'NJ',33:'NM',34:'NV',35:'NY',36:'OH',37:'OK',38:'OR',39:'PA',40:'RI',41:'SC',42:'SD',43:'TN',44:'TX',45:'UT',46:'VA',47:'VT',48:'WA',49:'WI',50:'WV',51:'WY'}
+   # ~~~ AVERAGE GAS PRICES AUGUST 9TH, 2020 ~~~
+
+
+    states = {'AK':'$3.69','AL':'2.84','AR':'2.87','AZ':'3.1','CA':'4.04','CO':'3.64','CT':'3.18','DC':'3.28','DE':'3.00','FL':'3.01', 'GA':'2.96',
+            'HI':'4.09','IA':'3.02','ID':'3.81','IL':'3.38','IN':'3.12','KS':'2.94','KY':'2.93','LA':'2.83','MA':'3.05','MD':'3.05','ME':'3.11',
+            'MI':'3.25','MN':'3.04','MO':'2.87','MS':'2.79','MT':'3.31','NC':'2.92','ND':'3.13','NE':'3.03','NH':'3.00','NJ':'3.20','NM':'3.08',
+            'NV':'4.05','NY':'3.22','OH':'3.04','OK':'2.88','OR':'3.78','PA':'3.28','RI':'3.06','SC':'2.87','SD':'3.17','TN':'2.88','TX':'2.84',
+            'UT':'3.86','VA':'2.97','VT':'3.09','WA':'3.89','WI':'3.04','WV':'3.05','WY':'3.58'}
+    
     cityState = HomeAddress.split(',')
     rawState = cityState[1].upper()
     state = rawState.lstrip()
     for key,value in states.items():
-        if value == state:
-            price = re.findall(r'([$].+\s)', str(contents[key]))
-            costPerGallon = price[0].rstrip()
-            cost = round(float(costPerGallon[1:]) * float(fuel), 2)
-            break
+        if key == state:
+            cost = round(float(value) * float(fuel), 2)
 
 
     # ~~~ TEMPERATURES ~~~
@@ -121,24 +121,21 @@ def startTrip():
         jsonresponse = response2.json()
 
 
-        # ~~~ SCRAPING AAA TO GET AVERAGE GAS PRICE PER STATE ~~~
+        # ~~~ AVERAGE GAS PRICES AUGUST 9TH, 2020 ~~~
 
-        url = 'https://gasprices.aaa.com/state-gas-price-averages/'
-        req = urllib3.PoolManager()
-        res = req.request('GET', url)
-        soup = BeautifulSoup(res.data, 'html.parser')
-        contents = soup.find_all(class_="regular")
-        states = {1:'AK',2:'AL',3:'AR',4:'AZ',5:'CA',6:'CO',7:'CT',8:'DC',9:'DE',10:'FL',11:'GA',12:'HI',13:'IA',14:'ID',15:'IL',16:'IN',17:'KS',18:'KY',19:'LA',20:'MA',21:'MD',22:'ME',23:'MI',24:'MN',25:'MO',26:'MS',27:'MT',28:'NC',29:'ND',30:'NE',31:'NH',32:'NJ',33:'NM',34:'NV',35:'NY',36:'OH',37:'OK',38:'OR',39:'PA',40:'RI',41:'SC',42:'SD',43:'TN',44:'TX',45:'UT',46:'VA',47:'VT',48:'WA',49:'WI',50:'WV',51:'WY'}
+
+        states = {'AK':'$3.69','AL':'2.84','AR':'2.87','AZ':'3.1','CA':'4.04','CO':'3.64','CT':'3.18','DC':'3.28','DE':'3.00','FL':'3.01', 'GA':'2.96',
+                'HI':'4.09','IA':'3.02','ID':'3.81','IL':'3.38','IN':'3.12','KS':'2.94','KY':'2.93','LA':'2.83','MA':'3.05','MD':'3.05','ME':'3.11',
+                'MI':'3.25','MN':'3.04','MO':'2.87','MS':'2.79','MT':'3.31','NC':'2.92','ND':'3.13','NE':'3.03','NH':'3.00','NJ':'3.20','NM':'3.08',
+                'NV':'4.05','NY':'3.22','OH':'3.04','OK':'2.88','OR':'3.78','PA':'3.28','RI':'3.06','SC':'2.87','SD':'3.17','TN':'2.88','TX':'2.84',
+                'UT':'3.86','VA':'2.97','VT':'3.09','WA':'3.89','WI':'3.04','WV':'3.05','WY':'3.58'}
+        
         cityState = HomeAddress.split(',')
         rawState = cityState[1].upper()
         state = rawState.lstrip()
         for key,value in states.items():
-            if value == state:
-                price = re.findall(r'([$].+\s)', str(contents[key]))
-                costPerGallon = price[0].rstrip()
-                cost = round(float(costPerGallon[1:]) * float(fuel), 2)
-                break
-
+            if key == state:
+                cost = round(float(value) * float(fuel), 2)
 
         # ~~~ TEMPERATURES ~~~
         
@@ -150,7 +147,7 @@ def startTrip():
         saturday = weatherDataPull(jsonresponse, 5)
         sunday = weatherDataPull(jsonresponse, 6)
 
-        NewTrip = Trip(user_id=current_user.id, cost=cost, distance=distance, time=time, fuel=fuel, mpg=mpg, Destination=Destination, HomeAddress=HomeAddress, mondayMaxTemp=monday[0], mondayMinTemp=monday[1], mondayIcon=monday[2], mondayDescription=monday[3],tuesdayMaxTemp=tuesday[0], 
+        NewTrip = Trip(user_id=current_user.id, distance=distance, time=time, cost=cost, fuel=fuel, mpg=mpg, Destination=Destination, HomeAddress=HomeAddress, mondayMaxTemp=monday[0], mondayMinTemp=monday[1], mondayIcon=monday[2], mondayDescription=monday[3],tuesdayMaxTemp=tuesday[0], 
         tuesdayMinTemp=tuesday[1], tuesdayIcon=tuesday[2], tuesdayDescription=tuesday[3], wensdayMaxTemp=wensday[0], wensdayMinTemp=wensday[1], wensdayIcon=wensday[2], wensdayDescription=wensday[3],
         thursdayMaxTemp=thursday[0], thursdayMinTemp=thursday[1], thursdayIcon=thursday[2], thursdayDescription=thursday[3], fridayMaxTemp=friday[0], fridayMinTemp=friday[1], fridayIcon=friday[2], fridayDescription=friday[3],
         saturdayMaxTemp=saturday[0], saturdayMinTemp=saturday[1], saturdayIcon=saturday[2], saturdayDescription=saturday[3], sundayMaxTemp=sunday[0], sundayMinTemp=sunday[1], sundayIcon=sunday[2], sundayDescription=sunday[3])
@@ -159,17 +156,14 @@ def startTrip():
         db.session.commit()   
 
         tripDescription = db.session.query(Trip).filter_by(user_id=current_user.id, cost=cost).first()
+        return redirect(url_for(".currentTrip", id=tripDescription.id))
         
-        return render_template('current_trip.html', user=current_user, mapquestKey=mapquestKey, tripDescription=tripDescription)
-
-
     return render_template('trip.html', user=current_user)
 
 
 
 @views.route('/current-trip/<id>', methods=['GET','POST'])
 def currentTrip(id):
-
 
     tripDescription = db.session.query(Trip).filter_by(user_id=current_user.id, id=id).first()
     if request.form.get("delete"):
@@ -178,6 +172,10 @@ def currentTrip(id):
         return redirect(url_for(".home"))
     return render_template('current_trip.html', user=current_user, mapquestKey=mapquestKey, tripDescription=tripDescription)
 
+
+
+
+# ~~~~~~~~~ FUNCTIONS ~~~~~~~~~~~
 
 
 def KelvintoF(Kelvin):
