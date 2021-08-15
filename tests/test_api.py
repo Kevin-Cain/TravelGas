@@ -1,5 +1,5 @@
 import unittest
-from . import views
+from website import views
 
 
 
