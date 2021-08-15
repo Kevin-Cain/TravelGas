@@ -1,5 +1,5 @@
 import unittest
-from website import views
+from . import views
 
 
 
@@ -7,6 +7,4 @@ from website import views
 
 
 def test_test():
-    
-    #assert views.test()
     assert views.api_trip(33, 'Redding,Ca', 'Chico,Ca')
