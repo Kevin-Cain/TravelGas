@@ -28,7 +28,7 @@ def api_trip(mpg, HomeAddress, Destination):
 
 
     # ~~~ MAPQUEST API ~~~
-    response = requests.get(f'http://www.mapquestapi.com/directions/v2/optimizedroute?key=zjZHAQ4GofxxkcmTCA9PozkchsY88cEA&json={{"locations":["{HomeAddress}","{Destination}"]}}')
+    response = requests.get(f'http://www.mapquestapi.com/directions/v2/optimizedroute?key={mapquestKey}&json={{"locations":["{HomeAddress}","{Destination}"]}}')
     distance = round(response.json()['route']['distance'], 1)
     destinationlat = response.json()['route']['boundingBox']['lr']['lat']
     destinationlng = response.json()['route']['boundingBox']['lr']['lng']
@@ -40,7 +40,7 @@ def api_trip(mpg, HomeAddress, Destination):
 
 
     # ~~~ OPENWEATHER API ~~~
-    response2 = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={destinationlat}&lon={destinationlng}&exclude=current,minutely,hourly,dailyalerts&appid=b050b018cb27f03a3f48a2dbd1648808')
+    response2 = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={destinationlat}&lon={destinationlng}&exclude=current,minutely,hourly,dailyalerts&appid={OpenWeatherKey}')
     jsonresponse = response2.json()
 
 
