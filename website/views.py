@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, json, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, json, redirect, url_for
 import requests
 from flask_login import login_required, current_user
 from .models import  db, User, Trip
@@ -19,12 +19,16 @@ OpenWeatherKey = os.environ.get('OpenWeatherKey', None)
 
 # ~~~~~~~ API ~~~~~~~~
 
+@views.route('/test')
+def test():
+    return "WORKS"
+
 @views.route('/api/trip/<int:mpg>/<HomeAddress>/<Destination>', methods=['GET','POST'])
 def api_trip(mpg, HomeAddress, Destination):
 
 
     # ~~~ MAPQUEST API ~~~
-    response = requests.get(f'http://www.mapquestapi.com/directions/v2/optimizedroute?key={mapquestKey}&json={{"locations":["{HomeAddress}","{Destination}"]}}')
+    response = requests.get(f'http://www.mapquestapi.com/directions/v2/optimizedroute?key=zjZHAQ4GofxxkcmTCA9PozkchsY88cEA&json={{"locations":["{HomeAddress}","{Destination}"]}}')
     distance = round(response.json()['route']['distance'], 1)
     destinationlat = response.json()['route']['boundingBox']['lr']['lat']
     destinationlng = response.json()['route']['boundingBox']['lr']['lng']
@@ -36,7 +40,7 @@ def api_trip(mpg, HomeAddress, Destination):
 
 
     # ~~~ OPENWEATHER API ~~~
-    response2 = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={destinationlat}&lon={destinationlng}&exclude=current,minutely,hourly,dailyalerts&appid={OpenWeatherKey}')
+    response2 = requests.get(f'https://api.openweathermap.org/data/2.5/onecall?lat={destinationlat}&lon={destinationlng}&exclude=current,minutely,hourly,dailyalerts&appid=b050b018cb27f03a3f48a2dbd1648808')
     jsonresponse = response2.json()
 
 
@@ -66,8 +70,8 @@ def api_trip(mpg, HomeAddress, Destination):
     saturday = weatherDataPull(jsonresponse, 5)
     sunday = weatherDataPull(jsonresponse, 6)
 
-
-    return jsonify({'response': 200, 'results': [{'Origin': HomeAddress, 'Destination': Destination},
+   
+    return {'response': 200, 'results': [{'Origin': HomeAddress, 'Destination': Destination},
     {'Cost': '$ ' + str(cost), 'Distance': str(distance) + ' miles', 'Time': time, 'Fuel': str(fuel) + ' gallons'},
     {'Monday': {'Max Temp': str(monday[0]) + ' F', 'Min Temp': str(monday[1]) + ' F', 'Description': monday[3]}},
     {'Tuesday': {'Max Temp': str(tuesday[0]) + ' F', 'Min Temp': str(tuesday[1]) + ' F', 'Description': tuesday[3]}},
@@ -75,9 +79,7 @@ def api_trip(mpg, HomeAddress, Destination):
     {'Thursday': {'Max Temp': str(thursday[0]) + ' F', 'Min Temp': str(thursday[1]) + ' F', 'Description': thursday[3]}},
     {'Friday': {'Max Temp': str(friday[0]) + ' F', 'Min Temp': str(friday[1]) + ' F', 'Description': friday[3]}},
     {'Saturday': {'Max Temp': str(saturday[0]) + ' F', 'Min Temp': str(saturday[1]) + ' F', 'Description': saturday[3]}},
-    {'Sunday': {'Max Temp': str(sunday[0]) + ' F', 'Min Temp': str(sunday[1]) + ' F', 'Description': sunday[3]}}]})
-
-
+    {'Sunday': {'Max Temp': str(sunday[0]) + ' F', 'Min Temp': str(sunday[1]) + ' F', 'Description': sunday[3]}}]}
 
 
 
