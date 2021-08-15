@@ -18,8 +18,77 @@ UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](htt
 ### REST API Call
 ```
 format: GET /api/MPG/Origin/Destination
-example: curl  http://127.0.0.1:5000/api/trip/33/Las Vegas,Nv/Miami,Fl
+example: curl  http://127.0.0.1:5000/api/trip/33/LasVegas,Nv/Miami,Fl
 ```
+```
+Sample Response
+
+{
+  "response": 200, 
+  "results": [
+    {
+      "Destination": "Miami,Fl", 
+      "Origin": "LasVegas,Nv"
+    }, 
+    {
+      "Cost": "$ 318.74", 
+      "Distance": "2596.5 miles", 
+      "Fuel": "78.7 gallons", 
+      "Time": "37:28:37"
+    }, 
+    {
+      "Monday": {
+        "Description": "moderate rain", 
+        "Max Temp": "82 F", 
+        "Min Temp": "81 F"
+      }
+    }, 
+    {
+      "Tuesday": {
+        "Description": "light rain", 
+        "Max Temp": "86 F", 
+        "Min Temp": "81 F"
+      }
+    }, 
+    {
+      "Wensday": {
+        "Description": "light rain", 
+        "Max Temp": "86 F", 
+        "Min Temp": "82 F"
+      }
+    }, 
+    {
+      "Thursday": {
+        "Description": "light rain", 
+        "Max Temp": "86 F", 
+        "Min Temp": "82 F"
+      }
+    }, 
+    {
+      "Friday": {
+        "Description": "light rain", 
+        "Max Temp": "86 F", 
+        "Min Temp": "81 F"
+      }
+    }, 
+    {
+      "Saturday": {
+        "Description": "light rain", 
+        "Max Temp": "84 F", 
+        "Min Temp": "82 F"
+      }
+    }, 
+    {
+      "Sunday": {
+        "Description": "light rain", 
+        "Max Temp": "86 F", 
+        "Min Temp": "82 F"
+      }
+    }
+  ]
+}
+```
+
 ### Installing
 
 ```
