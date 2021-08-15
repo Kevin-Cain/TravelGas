@@ -1,6 +1,6 @@
 # UltimateTrip
 
-UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](https://github.com/Kevin-Cain/UltimateTrip) that gives analytics on a road trip. It was written with Python, Jinja, HTML and CSS. UltimateTrip uses the Flask web framework and SQlAlchemy for the database. It consumes the [OpenWeather API](https://openweathermap.org/api) and the [MapQuest API](https://developer.mapquest.com/documentation/open/). UltimateTrip uses Travis CI for continuous integration and deployment and deployed on [HEROKU](https://google.com)
+UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](https://github.com/Kevin-Cain/UltimateTrip) that gives analytics on a road trip. It was written with Python, Jinja, HTML and CSS. UltimateTrip uses the Flask web framework and SQlAlchemy for the database. It consumes the [OpenWeather API](https://openweathermap.org/api) and the [MapQuest API](https://developer.mapquest.com/documentation/open/). UltimateTrip uses Travis CI for continuous integration and deployment and is deployed on [HEROKU](https://google.com)
 
 ## Description
 * User makes account, inputs there car MPG, starting point and destination.  
