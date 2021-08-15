@@ -27,7 +27,7 @@ pip install requirements.txt
 ```
 
 ### Executing program Locally
-1)  Get an APi Key from [OpenWeather API](https://openweathermap.org/api) and [MapQuest API](https://developer.mapquest.com/documentation/open/)
+1)  Get an API Key from [OpenWeather API](https://openweathermap.org/api) and [MapQuest API](https://developer.mapquest.com/documentation/open/)
 2)  Replace lines 15 and 16 of [UltimateTrip/Website/views.py](https://github.com/Kevin-Cain/UltimateTrip/blob/main/website/views.py) with your Api Keys
 
 ```
