@@ -7,6 +7,8 @@ UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](htt
 * The Mapquest API and OpenWeather API is then called.
 * This data is then calculated and displayed in a clean user interface.
 
+![Screenshot from 2021-08-15 15-59-55](https://user-images.githubusercontent.com/79290152/129495197-caacade4-5735-4706-98f2-654734bd73cb.png)
+
 ## Features
 * Full Web Application
 * REST API
