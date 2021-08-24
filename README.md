@@ -22,7 +22,7 @@ UltimateTrip is a complete Web Application [Back-End / Front-End / REST API](htt
 ## REST API Call
 ```
 format: GET /api/MPG/Origin/Destination
-example: curl  http://127.0.0.1:5000/api/trip/33/LasVegas,Nv/Miami,Fl
+example: curl  https://ultimate-trip.herokuapp.com/api/trip/33/LasVegas,Nv/Miami,Fl
 ```
 ```
 Sample Response
